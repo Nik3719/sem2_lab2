@@ -103,21 +103,22 @@ int main()
 	}
 	case 5:
 	{
-		string fileName = "1.txt";
-		ifstream fileRead(fileName);
-		if (!fileRead.is_open())
-		{
-			cout << "There is not such file\n";
-		}
+		// string fileName = "1.txt";
+		// ifstream fileRead(fileName);
+		// if (!fileRead.is_open())
+		// {
+		// 	cout << "There is not such file\n";
+		// }
 		string str;
-		while (!fileRead.eof())
-		{
-			string buf;
-			getline(fileRead, buf);
-			str += buf;
-		}
-		fileRead.close();
-		cout << str << "\n";
+		cin>>str;
+		// while (!fileRead.eof())
+		// {
+		// 	string buf;
+		// 	getline(fileRead, buf);
+		// 	str += buf;
+		// }
+		// fileRead.close();
+		//cout << str << "\n";
 		Pair<string, int> res = MaxLenUbiqueSubString(str);
 		cout << res.second << '\n' << res.first << '\n';
 		break;
