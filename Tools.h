@@ -43,3 +43,5 @@ struct Pair
 		return true;
 	}
 };
+
+void Sort(DL<int> list, int listLength);

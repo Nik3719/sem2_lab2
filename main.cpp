@@ -1,5 +1,4 @@
 #include<iostream>
-//#include<Windows.h>
 #include<fstream>
 #include"Postfix.h"
 #include"Tools.h"
@@ -16,8 +15,6 @@ using namespace std;
 
 int main()
 {
-	//SetConsoleCP(65001);
-	//SetConsoleOutputCP(65001);
 
 	cout << "numberOfProgram=";
 	int numberOfProgram;
@@ -66,9 +63,11 @@ int main()
 			{
 				char sym = i;
 				cout << sym;
+
 				for (size_t j = 0; j < hist[i]; j++)
 				{
 					cout << '#';
+				
 				}
 				cout << '\n';
 			}
@@ -103,22 +102,8 @@ int main()
 	}
 	case 5:
 	{
-		// string fileName = "1.txt";
-		// ifstream fileRead(fileName);
-		// if (!fileRead.is_open())
-		// {
-		// 	cout << "There is not such file\n";
-		// }
 		string str;
-		cin>>str;
-		// while (!fileRead.eof())
-		// {
-		// 	string buf;
-		// 	getline(fileRead, buf);
-		// 	str += buf;
-		// }
-		// fileRead.close();
-		//cout << str << "\n";
+		getline(cin,str);
 		Pair<string, int> res = MaxLenUbiqueSubString(str);
 		cout << res.second << '\n' << res.first << '\n';
 		break;

@@ -1,48 +1,55 @@
 #include"MaxLenUbiqueSubString.h"
 
+bool search(string str, char sym)
+{
+	if (str.empty())
+	{
+		return false;
+	}
+	for (size_t i = 0; i < str.size(); i++)
+	{
+		if (str[i]==sym)
+		{
+			return true;
+		}
+	}
+	return false;
+	
+} 
+
 Pair<string,int> MaxLenUbiqueSubString(string str)
 {
-	Set<char> uniqueSubString;
-	dict<int> uniqueSubStrings;
-	for (char sym : str)
+	dict<int> indexSym;
+	string buf;
+
+	for (char sym:str)
 	{
-		if (uniqueSubString.SET_AT(sym))
+		if (search(buf,sym))
 		{
-			string buf;
-			int index = 0;
-			while (index < uniqueSubString.size)
-			{
-				if (uniqueSubString.table[index].isOccupied)
-				{
-					buf += uniqueSubString.table[index].key;
-					uniqueSubString.SETDEL(uniqueSubString.table[index].key);
-				}
-				index++;
-			}
-			uniqueSubStrings.HSET(buf, buf.size());
+			int len = buf.size();
+			indexSym.HSET(buf,len);
+			buf.clear();
+			buf += sym;
 		}
 		else
 		{
-			uniqueSubString.SETADD(sym);
+			buf+=sym;
 		}
 	}
+	int len = buf.size();
+	indexSym.HSET(buf, len);
+	string MaxLenString;
 	int index = 0;
-	int max = 0;
-	Pair<string,int> res;
-	while (index < uniqueSubStrings.size)
+	while (index<indexSym.size)
 	{
-		if (uniqueSubStrings.table[index].isOccupied)
+		if (indexSym.table[index].isOccupied)
 		{
-			string k = uniqueSubStrings.table[index].key;
-			int len = uniqueSubStrings.table[index].value;
-			if (len > max)
+			if (indexSym.table[index].key.size()>MaxLenString.size())
 			{
-				max = len;
-				res.first = k;
-				res.second = len;
+				MaxLenString=indexSym.table[index].key;
 			}
 		}
 		index++;
 	}
-	return res;
+	return {MaxLenString,indexSym[MaxLenString]};
 }

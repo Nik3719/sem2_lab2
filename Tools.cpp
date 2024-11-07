@@ -48,7 +48,7 @@ int ByteToInt(string str)
 bool fileExists(const string& filename) 
 {
     ifstream file(filename);
-    bool res = file.good(); // Проверяем, успешно ли открыт файл
+    bool res = file.good(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
     if (res)
     {
         file.close();
@@ -82,14 +82,36 @@ int64_t dg(int64_t base, int64_t exponent)
 {
     long long result = 1;
     while (exponent > 0) {
-        // Если exponent нечетный, умножаем результат на base
+        // пїЅпїЅпїЅпїЅ exponent пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ base
         if (exponent % 2 == 1) {
             result *= base;
         }
-        // Умножаем base на себя
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ base пїЅпїЅ пїЅпїЅпїЅпїЅ
         base *= base;
-        // Делим exponent на 2
+        // пїЅпїЅпїЅпїЅпїЅ exponent пїЅпїЅ 2
         exponent /= 2;
     }
     return result;
+}
+
+void Sort(DL<int> list, int listLength)
+{
+    while(listLength--)
+	{
+		bool swapped = false;
+		
+		for(int i = 0; i < listLength; i++)
+		{
+			if(list[i] > list[i + 1])
+			{
+                int buf = list[i];
+                list[i] = list[i+1];
+                list[i+1] = buf;
+				swapped = true;
+			}
+		}
+		
+		if(swapped == false)
+			break;
+	}
 }
